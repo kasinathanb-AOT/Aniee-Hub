@@ -1,0 +1,7 @@
+@import "../../constants/variables.scss";
+.header{
+    max-width: 1440px;
+    padding: 10px 20px;
+    font-size: var(--primary-font-size);
+    font-weight: var(--primary-font-weight);
+}

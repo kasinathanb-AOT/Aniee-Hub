@@ -1,0 +1,59 @@
+.indexBanner {
+    max-width: 1330px;
+    margin: 0 auto;
+    padding: 80px;
+    align-items: center;
+
+
+    .indexBannerSub {
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0 0 80px;
+        display: flex;
+        overflow: hidden;
+
+        border-radius: 64px;
+
+        background: #ffffff0d;
+
+        .left-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            .searchContainer {
+                display: flex;
+                gap: 12px;
+            }
+
+            input[type="text"] {
+                height: 50px;
+                padding: 0 20px;
+                font-size: 16px;
+                border-radius: 12px;
+                border: none;
+            }
+
+            .topSearch {
+                max-width: 75%;
+                // text-wrap: wrap;
+                white-space: nowrap;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                line-height: 19.2px;
+            }
+        }
+
+        .bannerImgContainer {
+            img {
+                max-width: 650px;
+                display: flex;
+                right: 0;
+                opacity: 75%;
+            }
+
+        }
+
+    }
+}

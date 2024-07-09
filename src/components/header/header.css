@@ -1,0 +1,15 @@
+:root {
+  --primary-color:#201f31;
+  --secondary-color:#fff;
+  --primary-font: "Bangers", system-ui;
+  --secondary-font:"Poppins", system-ui;
+  --primary-font-size:32px;
+  --primary-font-weight:600;
+}
+
+.header {
+  max-width: 1440px;
+  padding: 10px 20px;
+  font-size: var(--primary-font-size);
+  font-weight: var(--primary-font-weight);
+}/*# sourceMappingURL=header.css.map */
