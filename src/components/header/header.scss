@@ -4,4 +4,13 @@
     padding: 10px 20px;
     font-size: var(--primary-font-size);
     font-weight: var(--primary-font-weight);
+    align-items: center;
+    display: flex;
+    gap: 12px;
+
+    .logo{
+        width: 40px;
+        height: 40px;
+
+    }
 }

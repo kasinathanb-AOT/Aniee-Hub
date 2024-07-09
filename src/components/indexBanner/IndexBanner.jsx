@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./indexBanner.css";
 import BannerImg from "../../assets/anw-min.png";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function IndexBanner({ topSearch }) {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const animeList = topSearch;
+    if (topSearch && typeof topSearch === 'object' && topSearch.title) {
+      setLoading(false);
+    }
   }, [topSearch]);
 
   return (
@@ -22,15 +26,19 @@ function IndexBanner({ topSearch }) {
           </div>
           <div className="topSearch">
             <p>
-              <strong>Top Search:</strong>
+              <strong>Top Search :</strong>
             </p>
-              {topSearch.map((anime, index) => (
-                <p key={index}>{anime}</p>
-              ))}
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <div>
+                <p>{topSearch.title}⭐</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="bannerImgContainer">
-          <img src={BannerImg} />
+          <img src={BannerImg} alt="Banner" />
         </div>
       </div>
     </div>
