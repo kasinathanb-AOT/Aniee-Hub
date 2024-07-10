@@ -11,6 +11,11 @@ body{
 
 }
 
+@media screen and (max-width:1024px) {
+    body{ 
+        padding: 16px 32px;
+    }
+}
 p,h1,h2,h3,h4,h5,h6,span{
     margin: 0;
 }
@@ -20,10 +25,20 @@ p,h1,h2,h3,h4,h5,h6,span{
     height: 50px;
     border: none;
     border-radius: 12px;
-    background: #ffbade;
+    background: var(--pink-color);
+}
+
+.btnText{
+    font-size: 1.5em;
+    font-family: var(--primary-font);
+    color: #fff;
 }
 
 input:focus{
     outline: none;
     border: none;
+}
+
+button,a:hover{
+    cursor: pointer;
 }

@@ -4,14 +4,26 @@ import BannerImg from "../../assets/anw-min.png";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function IndexBanner({ topSearch }) {
+function IndexBanner({ topSearch, onSearch }) {
   const [loading, setLoading] = useState(true);
+  const [topSearches, setTopSearches] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    if (topSearch && typeof topSearch === 'object' && topSearch.title) {
+    if (topSearch && Array.isArray(topSearch)) {
+      setTopSearches(topSearch);
       setLoading(false);
     }
   }, [topSearch]);
+
+  // passing the search query to the index page with props "onSearch"
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    onSearch(query);
+  };
 
   return (
     <div className="indexBanner">
@@ -19,8 +31,13 @@ function IndexBanner({ topSearch }) {
         <div className="left-container">
           <h1>An!ee Hub</h1>
           <div className="searchContainer">
-            <input type="text" placeholder="Search Anime..." />
-            <button className="iconBtn">
+            <input
+              type="text"
+              placeholder="Search Anime..."
+              value={query}
+              onChange={handleInputChange}
+            />
+            <button className="iconBtn" onClick={handleSearchClick}>
               <FontAwesomeIcon icon={faSearch} size="xl" />
             </button>
           </div>
@@ -32,10 +49,13 @@ function IndexBanner({ topSearch }) {
               <p>Loading...</p>
             ) : (
               <div>
-                <p>{topSearch.title}⭐</p>
+                {topSearches.map((anime, index) => (
+                  <p key={index}>{anime.title}⭐</p>
+                ))}
               </div>
             )}
           </div>
+          <button className="iconBtn btnText">Watch An!me</button>
         </div>
         <div className="bannerImgContainer">
           <img src={BannerImg} alt="Banner" />

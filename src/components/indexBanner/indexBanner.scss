@@ -21,6 +21,10 @@
             flex-direction: column;
             gap: 24px;
 
+            h1{
+                color: var(--pink-color);
+            }
+
             .searchContainer {
                 display: flex;
                 gap: 12px;

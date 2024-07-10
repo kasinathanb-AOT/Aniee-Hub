@@ -5,6 +5,7 @@
   --secondary-font:"Poppins", system-ui;
   --primary-font-size:32px;
   --primary-font-weight:600;
+  --pink-color: #ffbade;
 }
 
 .header {
@@ -15,6 +16,7 @@
   align-items: center;
   display: flex;
   gap: 12px;
+  margin: auto;
 }
 .header .logo {
   width: 40px;

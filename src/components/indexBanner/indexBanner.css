@@ -18,6 +18,9 @@
   flex-direction: column;
   gap: 24px;
 }
+.indexBanner .indexBannerSub .left-container h1 {
+  color: var(--pink-color);
+}
 .indexBanner .indexBannerSub .left-container .searchContainer {
   display: flex;
   gap: 12px;
