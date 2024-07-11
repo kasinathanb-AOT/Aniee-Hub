@@ -10,19 +10,67 @@
 
 .header {
   max-width: 1440px;
-  padding: 10px 20px;
+  padding: 20px 20px;
   font-size: var(--primary-font-size);
   font-weight: var(--primary-font-weight);
   align-items: center;
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
   margin: auto;
   position: sticky;
   top: 0;
   z-index: 1;
   background: var(--primary-color);
 }
-.header .logo {
+.header .left {
+  gap: 12px;
+  display: flex;
+}
+.header .left .logo {
   width: 40px;
   height: 40px;
+}
+.header .right {
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.header .right .profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.header .right .profile:hover {
+  cursor: pointer;
+}
+.header .right .dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--primary-color);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.header .right .dropdown ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0px;
+}
+.header .right .dropdown ul li {
+  padding: 2px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--pink-color);
+}
+.header .right .dropdown ul li:hover {
+  background-color: rgba(240, 240, 240, 0.3725490196);
+  border-radius: 10px;
 }/*# sourceMappingURL=header.css.map */

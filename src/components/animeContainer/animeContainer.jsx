@@ -1,45 +1,44 @@
 import React from "react";
 import "./animeContainer.css";
+import Loader from "../loader";
+import AnimeSearchCard from "../AnimeSearchCard/AnimeSearchCard";
+import AnimeCard from "../AnimeCard/AnimeCard";
 
-function AnimeContainer({ searchQuery, trending }) {
-
-
-  
+function AnimeContainer({ searchQuery, trending, animeResult, loading }) {
   return (
     <div className="animeContainer">
-      {searchQuery ? (
-        <>
-          <h1>
-            You searched for:
-            {searchQuery}
-          </h1>
-          <div className="aniCardContainer">
-            <div className="aniCard"></div>
-          </div>
-        </>
+      {loading ? (
+        <Loader />
       ) : (
-        <div className="animeContainer">
-          <h1>Trending</h1>
-          <div className="animeContainerSub">
-            {trending && trending.length > 0 ? (
-              trending.map((anime, index) => (
-                <div className="aniCardContainer" key={index}>
-                  <div className="leftContainer">
-                    <div className="rating">{anime.rank}</div>
-                    <div className="titleContainer">
-                      <p>{anime.name} ⭐</p>
-                    </div>
-                  </div>
-                  <div className="aniCard">
-                    <img src={anime.poster} alt="Anime Image" />
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>No data available</p>
-            )}
-          </div>
-        </div>
+        <>
+          {searchQuery ? (
+            <div className="animeContainer">
+              <h1>You searched for: {searchQuery}</h1>
+              <div className="animeContainerSub">
+                {animeResult && animeResult.length > 0 ? (
+                  animeResult.map((anime, index) => (
+                    <AnimeSearchCard key={index} anime={anime} />
+                  ))
+                ) : (
+                  <p>No results found</p>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="animeContainer">
+                <h1>Trending</h1>
+              <div className="animeContainerSub">
+                {trending && trending.length > 0 ? (
+                  trending.map((anime, index) => (
+                    <AnimeCard key={index} anime={anime} />
+                  ))
+                ) : (
+                  <Loader />
+                )}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,0 +1,42 @@
+.searchCard {
+  max-width: 160px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  cursor: pointer;
+  transition: 0.2s ease all;
+  max-height: 250px;
+  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5764705882);
+}
+.searchCard img {
+  max-width: 180px;
+  max-height: 250px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Adding inset shadow */
+}
+.searchCard .rank {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--pink-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.searchCard .title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 0;
+}/*# sourceMappingURL=animeSearchCard.css.map */

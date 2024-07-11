@@ -1,0 +1,48 @@
+.aniCardContainer {
+  display: flex;
+  gap: 10px;
+}
+.aniCardContainer .leftContainer {
+  display: flex;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  gap: 12px;
+  max-height: 250px;
+  height: 100%;
+}
+.aniCardContainer .leftContainer .titleContainer {
+  display: flex;
+  align-items: center;
+}
+.aniCardContainer .leftContainer .rating {
+  background: var(--pink-color);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  transform: rotate(90deg);
+  border-radius: 50%;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  justify-content: center;
+}
+.aniCardContainer .aniCard {
+  max-width: 160px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  cursor: pointer;
+  transition: 0.2s ease all;
+  max-height: 250px;
+  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5764705882);
+}
+.aniCardContainer .aniCard:hover {
+  transform: scale(1.01);
+}
+.aniCardContainer .aniCard img {
+  width: 180px;
+  height: 250px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}/*# sourceMappingURL=animeCard.css.map */

@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import IndexBanner from "../../components/indexBanner/IndexBanner";
 import Header from "../../components/header/header";
-import { topSearches, trendingAnimes } from "../../services/animeServices";
+import { SearchAnime, topSearches, trendingAnimes } from "../../services/animeServices";
 import AnimeContainer from "../../components/animeContainer/animeContainer";
+import LoadingPage from "../../components/loadingPage/LoadingPage";
 
 function Index() {
+  const [mainLoading, setMainLoading] = useState(true);
   const [top, setTop] = useState({});
   const [query, setQuery] = useState("");
   const [trending, setTrending] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [animeResult, setAnimeResult] = useState([]);
 
   useEffect(() => {
     const fetchTopSearches = async () => {
@@ -23,17 +27,26 @@ function Index() {
     fetchTopSearches();
   }, []);
 
-  const handleSearch = (query) => {
+  const handleSearch = async (query) => {
     setQuery(query);
+    setLoading(true);
+    try {
+      const response = await SearchAnime(query);
+      setAnimeResult(response.animes);
+      console.log('Anime search result:', response.animes);
+    } catch (error) {
+      console.error("Error in index while searching...", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     const fetchTrendingAnimes = async () => {
       try {
-        console.log("Fetching trending animes in component...");
         const response = await trendingAnimes();
-        console.log("Trending animes response in component:", response);
         setTrending(response);
+        setMainLoading(false);
       } catch (error) {
         console.error("Error fetching trending animes in component:", error);
       }
@@ -43,12 +56,19 @@ function Index() {
   }, []);
 
   return (
-    <div className="indexPage">
-      <Header />
-      <IndexBanner topSearch={top} onSearch={handleSearch} />
-      <AnimeContainer searchQuery={query} trending={trending} />
-    </div>
+    <>
+      {mainLoading ? (
+        <LoadingPage />
+      ) : (
+        <div className="indexPage">
+          <Header />
+          <IndexBanner topSearch={top} onSearch={handleSearch} />
+          <AnimeContainer searchQuery={query} trending={trending} animeResult={animeResult} loading={loading} />
+        </div>
+      )}
+    </>
   );
+  
 }
 
 export default Index;

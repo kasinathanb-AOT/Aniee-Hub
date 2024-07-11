@@ -10,7 +10,6 @@ function IndexBanner({ topSearch, onSearch }) {
   const [topSearches, setTopSearches] = useState([]);
   const [query, setQuery] = useState("");
 
-  console.log(topSearch);
 
   useEffect(() => {
     if (topSearch && Array.isArray(topSearch)) {
@@ -49,7 +48,6 @@ function IndexBanner({ topSearch, onSearch }) {
               <strong>Top Search :</strong>
             </p>
             {loading ? (
-              // <p>Loading...</p>
               <Loader/>
             ) : (
               <div className="topText">

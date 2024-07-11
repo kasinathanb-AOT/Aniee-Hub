@@ -6,7 +6,7 @@ const base_url = "http://localhost:4000"
 
 export const topSearches = async () => {
   const response = await axios.get(`${base_url}/anime/home`);
-  return response.data.top10Animes.today.slice(0, 5);
+  return response.data.top10Animes.today.slice(0, 3);
 };
 
 
@@ -17,5 +17,29 @@ export const trendingAnimes = async () => {
     return top10Animes.slice(0, 50);
   } catch (error) {
     console.error("Error fetching trending animes:", error);
+  }
+};
+
+
+export const SearchAnime = async (title) => {
+  try {
+    console.log('SearchAnime function called with title:', title);
+    
+    if (!title) {
+      throw new Error('Title parameter is required');
+    }
+
+    const response = await axios.get(`${base_url}/anime/search?q=${title}&page=1`);
+
+    console.log('Response status:', response.status);
+    console.log('Response data:', response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error while searching:', error.message);
+    if (error.response) {
+      console.error('Error response status:', error.response.status);
+      console.error('Error response data:', error.response.data);
+    }
   }
 };
