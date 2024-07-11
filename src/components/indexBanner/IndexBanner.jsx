@@ -3,11 +3,14 @@ import "./indexBanner.css";
 import BannerImg from "../../assets/anw-min.png";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loader from "../loader";
 
 function IndexBanner({ topSearch, onSearch }) {
   const [loading, setLoading] = useState(true);
   const [topSearches, setTopSearches] = useState([]);
   const [query, setQuery] = useState("");
+
+  console.log(topSearch);
 
   useEffect(() => {
     if (topSearch && Array.isArray(topSearch)) {
@@ -46,11 +49,12 @@ function IndexBanner({ topSearch, onSearch }) {
               <strong>Top Search :</strong>
             </p>
             {loading ? (
-              <p>Loading...</p>
+              // <p>Loading...</p>
+              <Loader/>
             ) : (
-              <div>
+              <div className="topText">
                 {topSearches.map((anime, index) => (
-                  <p key={index}>{anime.title}⭐</p>
+                  <p key={index}>{anime.name}⭐</p>
                 ))}
               </div>
             )}

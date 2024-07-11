@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import IndexBanner from "../../components/indexBanner/IndexBanner";
 import Header from "../../components/header/header";
-import { topSearches } from "../../services/animeServices";
+import { topSearches, trendingAnimes } from "../../services/animeServices";
 import AnimeContainer from "../../components/animeContainer/animeContainer";
 
 function Index() {
   const [top, setTop] = useState({});
-  const [query, SetQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const [trending, setTrending] = useState({});
 
   useEffect(() => {
     const fetchTopSearches = async () => {
@@ -23,14 +24,29 @@ function Index() {
   }, []);
 
   const handleSearch = (query) => {
-    SetQuery(query);
+    setQuery(query);
   };
+
+  useEffect(() => {
+    const fetchTrendingAnimes = async () => {
+      try {
+        console.log("Fetching trending animes in component...");
+        const response = await trendingAnimes();
+        console.log("Trending animes response in component:", response);
+        setTrending(response);
+      } catch (error) {
+        console.error("Error fetching trending animes in component:", error);
+      }
+    };
+
+    fetchTrendingAnimes();
+  }, []);
 
   return (
     <div className="indexPage">
       <Header />
       <IndexBanner topSearch={top} onSearch={handleSearch} />
-      <AnimeContainer searchQuery={query} trending={top} />
+      <AnimeContainer searchQuery={query} trending={trending} />
     </div>
   );
 }

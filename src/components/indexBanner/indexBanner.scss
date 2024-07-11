@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-
+            max-width: 380PX;
             h1{
                 color: var(--pink-color);
             }
@@ -43,12 +43,12 @@
             }
 
             .topSearch {
-                max-width: 75%;
                 white-space: nowrap;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 8px;
                 line-height: 19.2px;
+                text-wrap: wrap;
             }
         }
 
@@ -64,3 +64,5 @@
 
     }
 }
+
+

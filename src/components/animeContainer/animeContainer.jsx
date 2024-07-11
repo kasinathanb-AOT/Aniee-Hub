@@ -2,6 +2,9 @@ import React from "react";
 import "./animeContainer.css";
 
 function AnimeContainer({ searchQuery, trending }) {
+
+
+  
   return (
     <div className="animeContainer">
       {searchQuery ? (
@@ -22,13 +25,13 @@ function AnimeContainer({ searchQuery, trending }) {
               trending.map((anime, index) => (
                 <div className="aniCardContainer" key={index}>
                   <div className="leftContainer">
-                    <div className="rating">9</div>
+                    <div className="rating">{anime.rank}</div>
                     <div className="titleContainer">
-                      <p>{anime.title} ⭐</p>
+                      <p>{anime.name} ⭐</p>
                     </div>
                   </div>
                   <div className="aniCard">
-                    <img src={anime.images.jpg.image_url} alt="Anime Image" />
+                    <img src={anime.poster} alt="Anime Image" />
                   </div>
                 </div>
               ))

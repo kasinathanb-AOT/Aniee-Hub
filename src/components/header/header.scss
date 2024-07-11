@@ -8,10 +8,13 @@
     display: flex;
     gap: 12px;
     margin: auto;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--primary-color);
 
     .logo{
         width: 40px;
         height: 40px;
-
     }
 }
